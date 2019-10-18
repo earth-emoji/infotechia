@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row my-5">
+            <div class="col">
+                <ul>
+                    {% for tut in tuts %}
+                        <li>
+                            <h4>{{ tut.title }}</h4>
+                            <p class="content-markdown">{{ tut.content }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

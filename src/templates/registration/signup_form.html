@@ -1,0 +1,46 @@
+{% extends 'auth.html' %}
+
+{% block content %}
+<div class="color-bg jade-bg">
+    <form class="mt-5" method="post" novalidate enctype="multipart/form-data">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+        {% csrf_token %}
+        <div class="form-row my-2">
+            <div class="col">
+                {{ form.username.errors }}
+                {{ form.username }}
+            </div>
+            <div class="col">
+                {{ form.email.errors }}
+                {{ form.email }}
+            </div>
+        </div>
+
+        <div class="form-row my-2">
+            <div class="col">
+                {{ form.name.errors }}
+                {{ form.name }}
+            </div>
+            <div class="col">
+                {{ form.photo.errors }}
+                {{ form.photo }}
+                
+            </div>
+        </div>
+
+        <div class="form-row my-2">
+            <div class="col">
+                {{ form.password1.errors }}
+                {{ form.password1 }}
+            </div>
+            <div class="col">
+                {{ form.password2.errors }}
+                {{ form.password2 }}
+            </div>
+        </div>
+        
+        <button class="btn btn-lg french-laundry-blue-bg btn-block rounded-pill text-white" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-white text-center">Comani &copy; <script>document.write(new Date().getFullYear())</script></p>
+    </form>
+</div>
+{% endblock %}
