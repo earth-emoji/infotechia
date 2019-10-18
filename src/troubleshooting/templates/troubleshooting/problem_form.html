@@ -1,0 +1,22 @@
+{% extends 'workspace.html' %}
+
+{% block content %}
+<h1>Create a project</h1>
+
+<form class="mb-5" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.media }}
+    <div class="form-group">
+        {{ form.name.errors }}
+        <label for="{{ form.name.id_for_label }}">Name:</label>
+        {{ form.name }}
+    </div>
+    <div class="">
+        {{ form.description.errors }}
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-round">Save</button>
+</form>
+{% endblock content %}

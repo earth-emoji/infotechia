@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView
 
+from troubleshooting.models import Problem
+
 from accounts.forms import UserSignUpForm
 from accounts.models import UserProfile
 from users.models import User
@@ -31,7 +33,9 @@ def logout_view(request):
 def workspace_home(request, slug):
     template_name = 'workspace/home.html'
     profile = UserProfile.objects.get(slug=slug)
+    problems = Problem.objects.filter(problem_solver=profile)
     context = {
-        'profile': profile
+        'profile': profile,
+        'problems': problems,
     }
     return render(request, template_name, context)
