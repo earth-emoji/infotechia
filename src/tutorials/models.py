@@ -3,7 +3,6 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
-from mdeditor.fields import MDTextField
 
 # Create your models here.
 class Category(models.Model):
@@ -34,7 +33,7 @@ class Tutorial(models.Model):
     photo = models.ImageField(
         upload_to='photos/%Y/%m/%d/', null=True, blank=True)
     video = models.URLField(max_length=250, null=True, blank=True)
-    content = MDTextField(blank=True)
+    content = models.TextField(blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='tutorials', blank=True)
     categories = models.ManyToManyField(Category, related_name='tutorials', blank=True)
 

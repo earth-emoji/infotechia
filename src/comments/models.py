@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from mdeditor.fields import MDTextField
 
 from tutorials.models import Tutorial
 from forum.models import Thread
@@ -10,8 +9,8 @@ from forum.models import Thread
 class Comment(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
     tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
-    reply_to = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', null=True, blank=True)
-    body = MDTextField(config_name='comments', blank=True)
+    reply = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', null=True, blank=True)
+    body = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True, blank=True)

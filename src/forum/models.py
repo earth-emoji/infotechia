@@ -4,7 +4,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from mdeditor.fields import MDTextField
 
 # Create your models here.
 class Topic(models.Model):
@@ -30,7 +29,7 @@ class Topic(models.Model):
 class Thread(models.Model):
     slug = models.SlugField(max_length=128, unique=True, blank=True)
     subject = models.CharField(max_length=128)
-    body = MDTextField(blank=True)
+    body = models.TextField(blank=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='threads', blank=True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='threads', blank=True)
 
