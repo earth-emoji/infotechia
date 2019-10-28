@@ -1,3 +1,4 @@
+import uuid
 import datetime
 from django.conf import settings
 from django.db import models
@@ -34,8 +35,8 @@ class Thread(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='threads', blank=True)
 
     class Meta:
-        verbose_name = _('category')
-        verbose_name_plural = _('categories')
+        verbose_name = _('thread')
+        verbose_name_plural = _('threads')
 
     def __str__(self):
         return self.subject

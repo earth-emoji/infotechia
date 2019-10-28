@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from .forms import TutorialForm
 from .models import Tutorial
 
 # Create your views here.
@@ -15,3 +16,15 @@ def tuts_list(request):
         'search_term': search_term,
     }
     return render(request, template_name, context)
+
+def tut_create(request):
+    template_name = 'tutorials/tut_form.html'
+    form = TutorialForm(request.POST or None)
+    if form.is_valid():
+        c = form.save(commit=False)
+        c.author = request.user
+        c.save()
+        return redirect('tutorials:list')
+    else:
+        form = TutorialForm()
+    return render(request, template_name, {'form': form})

@@ -8,8 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>Infotechia | {% block title %}Welcome{% endblock %}</title>
-    <link href="{% static 'mdeditor/css/editormd.min.css' %}" rel="stylesheet">
-    <link href="{% static 'mdeditor/css/editormd.preview.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'libs/fontawesome/css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/overrides.css' %}">
@@ -33,24 +31,7 @@
     <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'libs/popper/popper.min.js' %}"></script>
     <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/editormd.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/marked.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/prettify.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/raphael.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/underscore.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/sequence-diagram.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/flowchart.min.js' %}"></script>
-    <script src="{% static 'mdeditor/js/lib/jquery.flowchart.min.js' %}"></script>
     <script src="{% static 'js/ajaxCRUD.js' %}"></script>
-    <script>
-        $(document).ready(function() {
-            $(".content-markdown").each(function() {
-                var content = $(this).text();
-                var markdown = marked(content);
-                $(this).html(markdown);
-            });
-        });
-    </script>
     {% block javascript %}{% endblock javascript %}
   </body>
 </html>

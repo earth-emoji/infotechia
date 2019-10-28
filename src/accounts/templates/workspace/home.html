@@ -2,23 +2,24 @@
 {% load static %}
 
 {% block content %}
+<h1>Projects</h1>
+
 <form class="mx-2 my-auto d-inline w-100" method="GET">
     <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search" value="{{ search_term }}">
+        <input type="text" name="q" class="form-control rounded-0" placeholder="Search" value="{{ search_term }}">
         <span class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button type="submit" class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
     </div>
 </form>
 
-<h1>Project</h1>
 <div class="row mb-3">
   <div class="col">
-    <a href="{% url 'projects:create' %}" class="btn btn-block btn-primary">Create</a>
+    <a href="{% url 'projects:create' %}" class="btn btn-block text-white prussian-blue-bg rounded-0">Create</a>
   </div>
 </div>
-<div class="row">
 
+<div class="row">
   {% for problem in problems %}
     <div class="col-md-3 col-sm-12">
       <div class="card">

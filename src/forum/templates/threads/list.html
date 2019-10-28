@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Tutorials</h1>
+<h1>{{ topic.name }} Discussions</h1>
 
 <form class="mx-2 my-auto d-inline w-100" method="GET">
     <div class="input-group">
@@ -15,17 +15,17 @@
 
 <div class="row mb-3">
     <div class="col">
-        <a href="{% url 'tutorials:create' %}" class="btn btn-block text-white prussian-blue-bg rounded-0">Create</a>
+        <a href="{% url 'threads:create' topic.slug %}" class="btn btn-block text-white prussian-blue-bg rounded-0">Create</a>
     </div>
 </div>
 
 <div class="row my-3">
     <div class="col">
         <ul>
-            {% for tut in tuts %}
+            {% for thread in threads %}
                 <li>
-                    <h4>{{ tut.title }}</h4>
-                    <p>{{ tut.content }}</p>
+                    <h4>{{ thread.subject }}</h4>
+                    <p>{{ thread.body }}</p>
                 </li>
             {% endfor %}
         </ul>

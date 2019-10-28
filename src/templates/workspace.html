@@ -17,12 +17,12 @@
         {% block styles %}{% endblock styles %}
     </head>
     <body>
-        <nav class="navbar navbar-expand fixed-top navbar-dark bg-primary"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <nav class="navbar navbar-expand fixed-top navbar-dark prussian-blue-bg"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"> <a class="nav-link" href="{% url 'workspace:home' request.user.profile.slug %}">Workspace <span class="sr-only">(current)</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Tutorials</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Forum</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'tutorials:list' %}">Tutorials</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'topics:list' %}">Discussions</a> </li>
                 </ul>
                 <form class="form-inline my-2 my-md-0"> </form>
             </div>
@@ -37,6 +37,7 @@
                     <li> <a href="#">Events</a> </li>
                     <li> <a href="#">Jobs</a> </li>
                     <li> <a href="#">Profile</a> </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                     
                 </ul>
             </div> <!-- /#sidebar-wrapper -->
@@ -53,14 +54,6 @@
         <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
         <script src="{% static 'libs/popper/popper.min.js' %}"></script>
         <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/editormd.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/marked.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/prettify.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/raphael.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/underscore.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/sequence-diagram.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/flowchart.min.js' %}"></script>
-        <script src="{% static 'mdeditor/js/lib/jquery.flowchart.min.js' %}"></script>
         <script src="{% static 'js/ajaxCRUD.js' %}"></script>
         {% block javascript %}{% endblock javascript %}
         <script>
@@ -78,12 +71,6 @@
               }
             });
           });
-
-          $(".content-markdown").each(function() {
-                var content = $(this).text();
-                var markdown = marked(content);
-                $(this).html(markdown);
-            });
            
         </script>
     </body>
