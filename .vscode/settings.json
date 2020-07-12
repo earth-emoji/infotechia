@@ -1,9 +1,10 @@
 {
-    "python.pythonPath": ".env\\Scripts\\python.exe",
+    "python.pythonPath": "/home/adler/code/python/infotechia/.env/bin/python3",
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
         "--load-plugins=pylint_django"
     ],
-    "editor.renderWhitespace": "boundary"
+    "editor.renderWhitespace": "boundary",
+    "python.languageServer": "Microsoft"
 }
