@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="ui container">
+    <div class="ui padded grid">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1 class="ui dividing header">{{ request.user.name }}'s Activity Center</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="four wide column">
+                {% include 'partials/base/_sidenav.html' %}
+            </div>
+            <div class="twelve wide column">
+                <h1 class="ui dividing header">Work History</h1>
+                <a href="{% url 'work-history:create' %}" class="ui button viking fluid my-3">Add</a>
+                <div class="ui divided items">
+                    {% for work in work_history %}
+                        <div class="item">
+                            <div class="content">
+                                <a class="header">{{ work.job_title }}</a>
+                                <div class="meta">
+                                    <span class="employer">{{ work.employer_name }}</span> &middot; &nbsp;
+                                    <span class="category">Category</span>
+                                </div>
+                                <div class="description">
+                                    <p>
+                                        {{ work.duties|truncatechars:255 }}
+                                    </p>
+                                </div>
+                                <div class="extra">
+                                    <div class="ui label">Start date: {{ work.start_date }}</div>
+                                    <div class="ui label">End date: {{ work.end_date }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

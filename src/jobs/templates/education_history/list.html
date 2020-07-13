@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="ui container">
+    <div class="ui padded grid">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1 class="ui dividing header">{{ request.user.name }}'s Activity Center</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="four wide column">
+                {% include 'partials/base/_sidenav.html' %}
+            </div>
+            <div class="twelve wide column">
+                <h1 class="ui dividing header">Education History</h1>
+                <a href="{% url 'education-history:create' %}" class="ui button viking fluid my-3">Add</a>
+                <div class="ui divided items">
+                    {% for edu in education_history %}
+                        <div class="item">
+                            <div class="content">
+                                <a class="header">{{ edu.school_name }}</a>
+                                <div class="meta">
+                                    {% if edu.did_complete %}
+                                        <span class="complete">Graduated</span> &middot; &nbsp;
+                                        <span class="certificate">{{ edu.certificate }}</span>
+                                    {% else %}
+                                        <span class="complete">Did not graduate</span>
+                                    {% endif %}
+                                    
+                                </div>
+                                <div class="description">
+                                    <p></p>
+                                </div>
+                                <div class="extra">
+                                    <div class="ui label">Start date: {{ edu.start_date }}</div>
+                                    <div class="ui label">End date: {{ edu.end_date }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
